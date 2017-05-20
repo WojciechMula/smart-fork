@@ -1,15 +1,24 @@
-#!/bin/bash
-./logo
-echo "	Compiling smart.c..................................[OK]"
-gcc source/smart.c -O3 -msse2 -o smart
-echo "	Compiling show.c...................................[OK]"
-gcc source/show.c -O3 -msse2 -o show
-echo "	Compiling selectAlgo.c.............................[OK]"
-gcc source/selectAlgo.c -O3 -o select
-echo "	Compiling test.c...................................[OK]"
-gcc source/test.c -O3 -o test
-echo "	Compiling all string matching algorithms..........."
-gcc source/compilesm.c -o compilesm
-./compilesm
-echo " "
-echo " "
+.PHONY: all logo
+
+FLAGS=-O3 -msse2
+SMART=smart show select test
+
+all: $(SMART)
+
+
+smart: source/smart.c
+	$(CC) $(FLAGS) -lm $^ -o $@
+
+show: source/show.c
+	$(CC) $(FLAGS) $^ -o $@
+
+select: source/selectAlgo.c
+	$(CC) $(FLAGS) $^ -o $@
+
+test: source/test.c
+	$(CC) $(FLAGS) $^ -o $@
+
+compilesm: source/compilesm.c
+	$(CC) $(FLAGS) $^ -o $@
+
+#./compilesm
