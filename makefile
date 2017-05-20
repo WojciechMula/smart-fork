@@ -1,9 +1,9 @@
-.PHONY: all logo
+.PHONY: all clear compileall
 
 FLAGS=-O3 -msse2
-SMART=smart show select test
+SMART=smart show select
 
-all: $(SMART)
+all: $(SMART) compileall
 
 
 smart: source/smart.c
@@ -18,7 +18,10 @@ select: source/selectAlgo.c
 test: source/test.c
 	$(CC) $(FLAGS) $^ -o $@
 
-compilesm: source/compilesm.c
-	$(CC) $(FLAGS) $^ -o $@
+compileall:
+	$(MAKE) -C source
 
-#./compilesm
+clear:
+	rm -f $(SMART)
+	$(MAKE) -C source clear
+
