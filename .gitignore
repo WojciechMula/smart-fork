@@ -2,4 +2,7 @@ select
 show
 smart
 test
+
 source/bin/*
+data/*
+smart11.06_data.zip

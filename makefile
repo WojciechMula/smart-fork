@@ -3,7 +3,7 @@
 FLAGS=-O3 -msse2
 SMART=smart show select
 
-all: $(SMART) compileall
+all: $(SMART) compileall data
 
 
 smart: source/smart.c
@@ -20,6 +20,17 @@ test: source/test.c
 
 compileall:
 	$(MAKE) -C source
+
+# get SMART corpora
+DATA=smart11.06_data.zip
+URL=http://www.dmi.unict.it/~faro/smart/$(DATA)
+$(DATA):
+	wget -P data $(URL)
+
+data/englishTexts/index.txt: $(DATA)
+	unzip -n $^
+
+data: data/englishTexts/index.txt
 
 clear:
 	rm -f $(SMART)
