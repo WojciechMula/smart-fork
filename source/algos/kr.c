@@ -25,7 +25,7 @@
 #include "include/main.h"
 #define REHASH(a, b, h) ((((h) - (a)*d) << 1) + (b))
 
-int search(char *x, int m, char *y, int n) {
+int search(unsigned char *x, int m, unsigned char *y, int n) {
    int d, hx, hy, i, j, count;
 
    count = 0;

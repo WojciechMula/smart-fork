@@ -23,7 +23,7 @@
 #include "include/define.h"
 #include "include/main.h"
 
-int search(char *x, int m, char *y, int n) {
+int search(unsigned char *x, int m, unsigned char *y, int n) {
    int j, k, ell, count;
   
    /* Preprocessing */

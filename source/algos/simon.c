@@ -82,7 +82,7 @@ int preSimon(char *x, int m, List L[]) {
 }
 
 
-int search(char *x, int m, char *y, int n) {
+int search(unsigned char *x, int m, unsigned char *y, int n) {
    int j, ell, state, count;
    List L[XSIZE];
  

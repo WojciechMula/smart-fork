@@ -29,7 +29,7 @@
 #define WORD_TYPE unsigned int
 #define WORD_BITS (sizeof(WORD_TYPE)*CHAR_BIT)
 
-int search(const unsigned char *x, int m, const unsigned char *y, int n)
+int search(unsigned char *x, int m, unsigned char *y, int n)
 {
    int i, j, k, m1;
    int beg, end;

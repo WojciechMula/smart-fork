@@ -25,7 +25,13 @@
 #include "include/define.h"
 #include "include/main.h"
 
-int search(unsigned char *x, int m, unsigned char *y, int n, int *FREQ)
+int search(unsigned char *x, int m, unsigned char *y, int n) {
+    static int FREQ[256];
+
+    return search_local(x, m, y, n, &FREQ);
+}
+
+int search_local(unsigned char *x, int m, unsigned char *y, int n, int *FREQ)
 {
    int i, j, s, tmp, count, hbc[SIGMA], v[XSIZE];
 

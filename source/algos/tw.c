@@ -89,7 +89,7 @@ int maxSufTilde(char *x, int m, int *p) {
    return(ms);
 }
 
-int search(char *x, int m, char *y, int n) {
+int search(unsigned char *x, int m, unsigned char *y, int n) {
    int i, j, ell, memory, p, per, q, count;
 
    /* Preprocessing */
