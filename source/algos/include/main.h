@@ -25,6 +25,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+int search(unsigned char*, int, unsigned char*, int);
+
 int main(int argc, char *argv[])
 {
 	clock_t start, end;
@@ -42,35 +44,35 @@ int main(int argc, char *argv[])
 		m = atoi(argv[3]); //segment size for the pattern
 	    key_t tkey = atoi(argv[4]); //segment name for the text
 		n = atoi(argv[5]); //segment size for the text
-	    key_t ekey = atoi(argv[7]); //segment name for the running time
+	    key_t ekey = atoi(argv[6]); //segment name for the running time
    	 	/* Locate the pattern. */
     	if ((pshmid = shmget(pkey, m, 0666)) < 0) {
-        	perror("shmget");
+        	perror("shmget (1)");
         	return 1;
     	}
     	/* Now we attach the segment to our data space. */
     	if ((p = shmat(pshmid, NULL, 0)) == (char *) -1) {
-        	perror("shmat");
+        	perror("shmat (2)");
         	return 1;
     	}
    	 	/* Locate the text. */
     	if ((tshmid = shmget(tkey, n, 0666)) < 0) {
-        	perror("shmget");
+        	perror("shmget (3)");
         	return 1;
     	}
     	/* Now we attach the segment to our data space. */
     	if ((t = shmat(tshmid, NULL, 0)) == (char *) -1) {
-        	perror("shmat");
+        	perror("shmat (4)");
         	return 1;
     	}
    	 	/* Locate the running time variable */
     	if ((eshmid = shmget(ekey, 8, 0666)) < 0) {
-        	perror("shmget");
+        	perror("shmget (5)");
         	return 1;
     	}
     	/* Now we attach the segment to our time variable space. */
     	if ((time = shmat(eshmid, NULL, 0)) == (double *) -1) {
-        	perror("shmat");
+        	perror("shmat (6)");
         	return 1;
     	}
 		

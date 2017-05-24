@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
     try = 0;
     do  {
 		rkey = rand()%1000;
-		rshmid = shmget(rkey, 4, IPC_CREAT | 0666); 
+		rshmid = shmget(rkey, 8, IPC_CREAT | 0666); 
  	} while(++try<10 && rshmid<0);
     if (rshmid < 0) {
         perror("shmget"); 
