@@ -25,14 +25,14 @@ compileall:
 DATA=smart11.06_data.zip
 URL=http://www.dmi.unict.it/~faro/smart/$(DATA)
 $(DATA):
-	wget -P data $(URL)
+	wget $(URL)
 
 data/englishTexts/index.txt: $(DATA)
 	unzip -n $^
 
 data: data/englishTexts/index.txt
 
-clear:
+clean:
 	rm -f $(SMART)
-	$(MAKE) -C source clear
+	$(MAKE) -C source clean
 
